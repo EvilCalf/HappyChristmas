@@ -1542,7 +1542,7 @@
                     <p>获得了一个红包</p>
                     <p>复制以下密令</p>
                     <p>到支付宝领取红包吧</p>
-                    <p id="pwd">徐佳鼎祝你圣诞快乐</p>
+                    <p id="pwd"></p>
                     <button class="copyBtn copy">点击复制</button>
 					<div class="close">
 						<a href="#"><img src="img/红包.jpg"/></a>
@@ -1593,7 +1593,40 @@
             });
 
         //摇一摇
+        $(function() {
+            var Main = (function() {
+                window.addEventListener('shake', autoRun, false);
 
+                function autoRun() {
+                    $(".redPacketInfo").fadeIn();
+                    $(".redPacketBox").addClass("comeup");
+                    $(".close").addClass("showup");
+
+                    $(".close").one("click", function() {
+                        $(".redPacketInfo").hide();
+                        $(".redPacketBox").removeClass("comeup");
+                        $(".close").removeClass("showup");
+                    });
+
+                    window.addEventListener('shake', function (event) {
+                        event.preventDefault()}, false);
+
+                    e.stopPropagation();
+
+                    $(".redPacketBox").on("click", function(e) {
+                        e.stopPropagation();
+                    });
+                }
+                var init = function() {
+
+                }
+                return {
+                    init: init
+                }
+            })();
+
+            $(Main.init());
+        });
 	</script>
 	</body>
 </html>
